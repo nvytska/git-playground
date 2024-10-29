@@ -9,6 +9,12 @@ def congratulate_user():
     print(f"= Congratulations! You won, your words: {guesses}! =")
     print("=============================")
 
+def double_word_check(guess):
+    if guess in guesses:
+        print("Sorry, you've already used this word")
+        return False
+    return True
+
 
 
 def is_game_over():
@@ -47,6 +53,9 @@ while not is_game_over():
     guess = input("Your next take: ")
 
     if not guess_is_valid(guess):
+        continue
+
+    if not double_word_check(guess):
         continue
 
     if guess in full_list:
